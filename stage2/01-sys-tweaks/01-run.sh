@@ -2,6 +2,10 @@
 
 install -m 755 files/resize2fs_once	"${ROOTFS_DIR}/etc/init.d/"
 
+# EXTENDED - install pi_gen_extended_once scripts
+install -m 755 files/pi_gen_extended_once_system	"${ROOTFS_DIR}/etc/init.d/"
+install -m 755 files/pi_gen_extended_once_config	"${ROOTFS_DIR}/etc/init.d/"
+
 install -d				"${ROOTFS_DIR}/etc/systemd/system/rc-local.service.d"
 install -m 644 files/ttyoutput.conf	"${ROOTFS_DIR}/etc/systemd/system/rc-local.service.d/"
 
