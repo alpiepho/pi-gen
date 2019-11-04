@@ -17,4 +17,8 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 
+# EXTENDED - example of delay start of wvdial
+#sleep 60
+#sudo wvdial &
+
 exit 0

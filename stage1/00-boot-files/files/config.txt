@@ -63,3 +63,13 @@ max_framebuffers=2
 
 [all]
 #dtoverlay=vc4-fkms-v3d
+
+# EXTENDED - endable uart and disable bluetooth
+#enable_uart=1
+#dtoverlay=p3-disable-bt
+
+# EXTENDED - screen resolution
+#hdmi_force_hotplug=1
+#hdmi_group=2
+#hdmi_mode=82
+

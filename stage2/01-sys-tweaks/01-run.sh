@@ -36,6 +36,13 @@ systemctl enable resize2fs_once
 EOF
 fi
 
+# EXTENDED - enable pi_gen_extended_once scripts
+on_chroot << EOF
+systemctl enable pi_gen_extended_once_system
+systemctl enable pi_gen_extended_once_config
+EOF
+
+
 on_chroot <<EOF
 for GRP in input spi i2c gpio; do
 	groupadd -f -r "\$GRP"
@@ -52,5 +59,23 @@ EOF
 on_chroot << EOF
 usermod --pass='*' root
 EOF
+
+# EXTENDED - run rpi_setup0.sh and rpi_setup2.sh
+on_chroot << EOF
+cd /home/pi
+# basic setup
+sudo -u pi ./rpi_setup0.sh
+# node setup
+sudo -u pi ./rpi_setup2.sh
+EOF
+
+# EXTENDED - example of installing custom-node-app
+#on_chroot << EOF
+#cd /home/pi
+## unpack and install custom-node-app
+#sudo -u pi tar xzvf custom-node-app.tgz
+#cd custom-node-app
+#sudo -u pi npm install
+#EOF
 
 rm -f "${ROOTFS_DIR}/etc/ssh/"ssh_host_*_key*

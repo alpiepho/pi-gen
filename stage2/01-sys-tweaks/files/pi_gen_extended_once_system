@@ -1,0 +1,25 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          pi_gen_extended_once_system
+# Required-Start:
+# Required-Stop:
+# Default-Start: 3
+# Default-Stop:
+# Short-Description: Configure system settings on first boot (like enable vnc)
+# Description:
+### END INIT INFO
+. /lib/lsb/init-functions
+case "$1" in
+  start)
+    log_daemon_msg "Starting pi_gen_extended_once_system"
+    ROOT_DEV=$(findmnt / -o source -n) &&
+    sudo raspi-config nonint do_vnc 0 &&
+    update-rc.d pi_gen_extended_once_system remove &&
+    rm /etc/init.d/pi_gen_extended_once_system &&
+    log_end_msg $?
+    ;;
+  *)
+    echo "Usage: $0 start" >&2
+    exit 3
+    ;;
+esac
