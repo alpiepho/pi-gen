@@ -1,0 +1,8 @@
+IMG_NAME="RaspianExtended"
+FIRST_USER_PASS="extended123"
+LOCALE_DEFAULT="en_US.UTF-8"
+KEYBOARD_KEYMAP="us"
+KEYBOARD_LAYOUT="English (US)"
+TIMEZONE_DEFAULT="America/Denver"
+ENABLE_SSH="1"
+
