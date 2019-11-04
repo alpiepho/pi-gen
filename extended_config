@@ -1,3 +1,4 @@
+# EXTENDED - example of config file
 IMG_NAME="RaspianExtended"
 FIRST_USER_PASS="extended123"
 LOCALE_DEFAULT="en_US.UTF-8"

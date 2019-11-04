@@ -1,3 +1,18 @@
+# What is EXTENDED?
+
+## Setting up VirtualBox with Debian10
+
+## Specific EXTENDED modifications
+
+All the 
+
+
+
+
+# ORIGINAL DOCUMENTATION:
+
+Below is the original documentation from the pi-gen project.
+
 # pi-gen
 
 _Tool used to create the raspberrypi.org Raspbian images_
