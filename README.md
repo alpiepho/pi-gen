@@ -44,21 +44,30 @@ steps that worked:
 
 All the modifications are marked with the word "EXTENDED" to make it easier to see what was changed.
 
-- extended_config - This is a sample config file with common environment variables described in original README.md
-- stage1/00-boot-files/00-run.sh - original method to enable ssh before pi-gen added SSH_ENABLE
-- stage1/00-boot-files/files/config.txt - example of configuring serial line ad uart instead of bluetooth
-- stage1/01-sys-tweaks/00-run.sh - copy and stage1/01-sys-tweaks/files/*.sh|*.tgz to /home/pi (in this case they are scripts and packages to be installed later.)
-- stage1/01-sys-tweaks/files/rpi_setup0.sh - example of system config to support some thing like asuze-iot-sdk-c
-- stage1/01-sys-tweaks/files/rpi_setup2.sh - example of installing node.js and example code
-- stage1/01-sys-tweaks/files/unpackAll.sh - example of unpacking and building tools
-- stage2/01-sys-tweaks/01-run.sh:
-  - install pi_gen_extended_once scripts
-  - enable once services
-  - example of running rpi_setup0.sh installed in stage 1
-  - example of installing/building node app from github
-- stage2/01-sys-tweaks/files/rc.local - example of defering a task for fixed time after boot
-- SKIP stage 4 and stage 5 
+1. extended_config - This is a sample config file with common environment variables described in original README.md
+2. stage1/00-boot-files/00-run.sh - original method to enable ssh before pi-gen added SSH_ENABLE
+3. stage1/00-boot-files/files/config.txt - example of configuring serial line ad uart instead of bluetooth
+4. stage1/01-sys-tweaks/00-run.sh - copy and stage1/01-sys-tweaks/files/*.sh|*.tgz to /home/pi (in this case they are scripts and packages to be installed later.)
+5. stage1/01-sys-tweaks/files/rpi_setup0.sh - example of system config to support some thing like asuze-iot-sdk-c
+6. stage1/01-sys-tweaks/files/rpi_setup2.sh - example of installing node.js and example code
+7. stage1/01-sys-tweaks/files/unpackAll.sh - example of unpacking and building tools
+8. stage2/01-sys-tweaks/01-run.sh:
+    * install pi_gen_extended_once scripts
+    * enable once services
+    * example of running rpi_setup0.sh installed in stage 1
+    * example of installing/building node app from github
+9. stage2/01-sys-tweaks/files/rc.local - example of defering a task for fixed time after boot
+10. SKIP stage 4 and stage 5 
 
+## TODO
+
+- Re-test once script added to SD card
+    * change device name?
+    * change password?
+    * what else?
+- Review the EXTENDED areas, are they all needed, describe why for each
+- Clone to private repo
+- Branch with hsip specific
 
 
 # ORIGINAL DOCUMENTATION:
