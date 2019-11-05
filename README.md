@@ -1,11 +1,63 @@
 # What is EXTENDED?
 
+EXTENDED pi-gen is a set of small changes on top of pi-gen to extend the base configuration.  It is also
+the specific steps I took to build the pi-gen project.
+
 ## Setting up VirtualBox with Debian10
+
+At the time of this writing, the latest Raspian image is "Buster", and there seem to be some issues with
+the system setup to support building pi-gen.  The root of the issue is related to driver problems with
+QEMU.  It appears that the Debian 10 distribution is the only Linux that supports pi-gen at this time.
+
+I was able to build pi-gen after serveral attempts at setting up Debian 10 on VirtualBox. Here are the
+steps that worked:
+
+- Install VirtualBox from https://www.virtualbox.org/wiki/Downloads
+- Get the Debian 10 ISO, 64bit, from https://www.debian.org/distrib/netinst
+- Create VM
+  - 10240 MB Ram
+  - 80GB Virtual Hard disk (I think full pi-gen work directory was ~ 40GB)
+  - after VM created, changed to 16MB Display
+- Attach Debian 10 ISO as CD/DVD Storage
+- Run thru Debian 10 install steps
+- (optional) After install/boot, change display size
+  - stretch window
+  - select settings/display
+  - I changed to largest 16:10
+  - I had to drag window to be able to hit 'apply'
+- open terminal
+- setup sudo
+  - su
+  - /sbin/usermod aG sudo <debian user name>
+  - close terminal
+  - TODO retest this
+- open terminal
+- git clone this project (https://github.com/alpiepho/pi-gen.git)
+- adjust extended_config
+- (just in case) sudo rm -rf deploy work
+- run 'sudo ./build.sh -c extended_config
+- took 45 minutes to build for me
+- raspian images in 'deploy'
+
 
 ## Specific EXTENDED modifications
 
-All the 
+All the modifications are marked with the word "EXTENDED" to make it easier to see what was changed.
 
+- extended_config - This is a sample config file with common environment variables described in original README.md
+- stage1/00-boot-files/00-run.sh - original method to enable ssh before pi-gen added SSH_ENABLE
+- stage1/00-boot-files/files/config.txt - example of configuring serial line ad uart instead of bluetooth
+- stage1/01-sys-tweaks/00-run.sh - copy and stage1/01-sys-tweaks/files/*.sh|*.tgz to /home/pi (in this case they are scripts and packages to be installed later.)
+- stage1/01-sys-tweaks/files/rpi_setup0.sh - example of system config to support some thing like asuze-iot-sdk-c
+- stage1/01-sys-tweaks/files/rpi_setup2.sh - example of installing node.js and example code
+- stage1/01-sys-tweaks/files/unpackAll.sh - example of unpacking and building tools
+- stage2/01-sys-tweaks/01-run.sh:
+  - install pi_gen_extended_once scripts
+  - enable once services
+  - example of running rpi_setup0.sh installed in stage 1
+  - example of installing/building node app from github
+- stage2/01-sys-tweaks/files/rc.local - example of defering a task for fixed time after boot
+- SKIP stage 4 and stage 5 
 
 
 

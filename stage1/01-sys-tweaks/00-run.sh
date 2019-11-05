@@ -12,6 +12,6 @@ echo "${FIRST_USER_NAME}:${FIRST_USER_PASS}" | chpasswd
 echo "root:root" | chpasswd
 EOF
 
-# for EXTENDED - cp *.sh and *.tgz
+# EXTENDED - cp *.sh and *.tgz
 install -v -m 777 files/*.sh "${ROOTFS_DIR}/home/pi"
 install -v -m 777 files/*.tgz "${ROOTFS_DIR}/home/pi"
